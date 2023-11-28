@@ -63,8 +63,8 @@ terraform init
 ```
 terraform apply -auto-approve
 ```
-└─ 위의 명령어를 치면 AWS(EC2), NCP(Server), GCP(VM)를 생성한다.
+└─ 위의 명령어를 치면 AWS(EC2), NCP(Server), GCP(CE), Azure(VM)를 생성한다.
 ```
 terraform destroy -auto-approve
 ```
-└─ 위의 명령어를 치면 AWS(EC2), NCP(Server), GCP(VM)가 삭제된다.
+└─ 위의 명령어를 치면 AWS(EC2), NCP(Server), GCP(CE), Azure(VM)가 삭제된다.
