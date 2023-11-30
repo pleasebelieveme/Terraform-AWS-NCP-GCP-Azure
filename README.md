@@ -93,7 +93,59 @@ provider "google" {
 }
 ```
 ### 4. Azure 로그인
+```
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+└─ Azure 로그인을 하기 위해서는 Auzre CLI설치가 필요하다. 위의 명령어로 Azure CLI를 설치한다.
 
+```
+az login --use-device-code
+```
+└─ 위의 명령어로 로그인을 성공하면 아래의 값을 출력해준다.
+```
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "",
+    "id": "",                           <--- ID값을 기억한다.
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Azure subscription 1",
+    "state": "Enabled",
+    "tenantId": "",                     <--- tenantID값을 기억한다.
+    "user": {
+      "name": "cain1227@naver.com",
+      "type": "user"
+    }
+  }
+```
+</br>
+```
+az account set --subscription "ID값"
+```
+└─ 위의 명령어로 ID값을 입력해준다. 아무이상없이 실행되면 정상이다.
+```
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/id값"
+```
+└─ 위의 명령어를 입력하면 아래의 값을 출력해준다.
+```
+{
+  "appId": "",                                     <--- appID값을 기억한다.
+  "displayName": "azure-cli-2023-11-30-08-31-21", 
+  "password": "",                                  <--- password값을 기억한다.
+  "tenant": "ID값"
+}
+```
+```
+export ARM_SUBSCRIPTION_ID=""    <--- ID값
+export ARM_TENANT_ID=""          <--- tenantID값
+export ARM_CLIENT_ID=""          <--- appID값
+export ARM_CLIENT_SECRET=""      <--- password값
+```
+└─ 위의 명령어로 환경변수 설정값을 입력한다. 
+```
+printenv | grep ^ARM*
+```
+└─ 적용된 환경변수 값을 확인한다.
 ## 실습적용
 ```
 terraform init
