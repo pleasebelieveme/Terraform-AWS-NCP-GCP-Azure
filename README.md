@@ -53,6 +53,45 @@ provider "ncloud" {
 ```
 └─ 생성된 신규 인증키를 위 부분에 적용시킨다.
  ### 3. GCP API 인증키
+ - Compute Engine API 활성화
+
+```
+https://cloud.google.com
+```
+└─ 위의 사이트를 로그인하고 검색항목에서 'compute Engine API'를 검색한다.
+새창이 열리면 API서비스활성화를 클릭하여 활성화시켜준다.</br>
+
+- 프로젝트 ID 적용
+홈화면에서 왼쪽 위 Google Cloud 오른편에 프로젝트 ID가 있다.</br>
+클릭을 하고 프로젝트 이름이 아닌 '프로젝트 ID'를 아래의 항목에 입력해준다.</br>
+```
+provider "google" {
+  credentials = file("<파일이름.확장자까지입력>")
+  project     = "<프로젝트 ID>"    <-----
+  region      = "asia-northeast3"
+  zone        = "asia-northeast3-a"
+}
+
+```
+
+- 어카운트키 적용</br>
+검색창에서 'service accounts'항목을 클릭한다.</br>
+서비스 계정 만들기 항목을 클릭한다.</br>
+원하는 이름을 정하여 입력하여주고 만들고 계속하기를 클릭하여 준다.</br>
+역할 선택을 클릭하고 기본(Basic)항목에서 편집자를 선택하여 준다.</br>
+완료를 눌러 서비스 계정 만들기를 완료한다.</br>
+서비스계정확인 페이지에서 오른쪽에 작업을 클릭하여 키관리 페이지로 들어간다.</br>
+'키추가'항목을 누르고 'JSON'유형으로 '만들기'를 클릭하면 자동적으로 내 컴퓨터 다운로드에 어카운트키 파일이 저장된다.</br>
+테라폼을 실행할 폴더에 어카운트키를 옮기고 아래의 항목에 입력해준다.</br>
+
+```
+provider "google" {
+  credentials = file("<파일이름.확장자까지입력>")    <-----
+  project     = "<프로젝트 ID>"
+  region      = "asia-northeast3"
+  zone        = "asia-northeast3-a"
+}
+```
 ### 4. Azure 로그인
 
 ## 실습적용
