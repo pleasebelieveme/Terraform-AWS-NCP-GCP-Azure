@@ -1,4 +1,4 @@
-# Terraform + AWS(EC2) + NCP(Server) + GCP(VM) + Azure(VM) Automation
+# Terraform + AWS(EC2) + NCP(Server) + GCP(CE) + Azure(VM) Automation
 Terrform을 이용해 AWS(EC2), NCP(Server), GCP(CE), Azure(VM)을 생성하는 방법을 구현해보았다.
                          
    
@@ -118,7 +118,6 @@ az login --use-device-code
     }
   }
 ```
-</br>
 ```
 az account set --subscription "ID값"
 ```
